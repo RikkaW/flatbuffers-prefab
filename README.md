@@ -1,5 +1,7 @@
 # FlatBuffers Prefab
 
+![Maven Central](https://img.shields.io/maven-central/v/dev.rikka.ndk.thirdparty/flatbuffers)
+
 Prefab package for FlatBuffers (https://github.com/google/flatbuffers).
 
 ## Integration
@@ -7,12 +9,6 @@ Prefab package for FlatBuffers (https://github.com/google/flatbuffers).
 This is a [Prefab](https://google.github.io/prefab/) library, so you will need to enable it in your project (requires Android Gradle Plugin 4.1+):
 
 gradle.properties:
-
-```properties
-# Header only package is not supported by the default version of prefab
-# https://github.com/google/prefab/issues/122
-android.prefabVersion=1.1.2
-```
 
 ```gradle
 android {
@@ -32,7 +28,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'dev.rikka.ndk.thirdparty:flatbuffers:1.12.0'
+    implementation 'dev.rikka.ndk.thirdparty:flatbuffers:<version>'
 }
 ```
 
