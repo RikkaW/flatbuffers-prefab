@@ -1,16 +1,16 @@
-import java.nio.file.Paths
-
 plugins {
     id 'com.android.library'
-    id 'com.vanniktech.maven.publish'
+    id 'maven-publish'
+    id 'signing'
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 33
     buildToolsVersion "30.0.3"
+    ndkVersion "24.0.8215888"
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 30
+        targetSdkVersion 33
         versionCode 1
         versionName "1.12.0"
         externalNativeBuild {
@@ -34,26 +34,6 @@ android {
         flatbuffers {
             headers "src/main/cpp/include"
         }
-    }
-}
-
-// prefabPublishing does not support header only lib (https://issuetracker.google.com/issues/173348031)
-
-def removeDummyStaticLibraryRelease = task('removeDummyStaticLibraryRelease').doLast {
-    def dir = Paths.get(project.buildDir.path, 'intermediates',
-            'prefab_package', 'release', 'prefab', "modules")
-    def modules = ['flatbuffers']
-    for (module in modules) {
-        def libs = dir.resolve("${module}/libs")
-        println("Remove $libs")
-        delete(libs)
-        mkdir(libs)
-    }
-}
-
-tasks.whenTaskAdded { task ->
-    if (task.name == 'prefabReleasePackage') {
-        task.finalizedBy removeDummyStaticLibraryRelease
     }
 }
 
