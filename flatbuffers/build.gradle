@@ -12,7 +12,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 33
         versionCode 1
-        versionName "1.12.0"
+        versionName "2.0.8"
         externalNativeBuild {
             cmake {
                 arguments "-DANDROID_STL=none"
@@ -33,6 +33,7 @@ android {
     prefab {
         flatbuffers {
             headers "src/main/cpp/include"
+            headerOnly true
         }
     }
 }
