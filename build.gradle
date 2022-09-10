@@ -84,6 +84,7 @@ subprojects {
             }
 
             signing {
+                sign publishing.publications
                 useGpgCmd()
             }
         }
